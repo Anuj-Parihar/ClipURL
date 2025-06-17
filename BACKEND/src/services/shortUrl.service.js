@@ -8,6 +8,7 @@ export const createShortUrlWithoutUser= async (url) =>{
 }
 export const createShortUrlWithUser = async (url,userId) =>{
     const shortUrl =await generatNanoid(7); // Generate a short URL with a length of 7 characters
+    if(!shortUrl) return new Error("Failed to generate short URL");
     await saveShortUrl(url,shortUrl,userId);
     return  shortUrl; // Return the generated short URL
 }
