@@ -1,13 +1,19 @@
-import React from 'react'
-import './App.css'
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { Home } from './pages/Home';
+import { NotFound } from './pages/NotFound';
 
+function App() {
   return (
-    <>
-      <h1>hello world</h1>
-       
-    </>
-  )
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
